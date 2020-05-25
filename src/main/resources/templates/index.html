@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insertar conrtibuyente</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+
+	<h2>Ingresar Contribuyente</h2>
+
+	<form th:action="@{/save}" th:object="${contribuyente}" method="post">
+	
+	<label>Nombre</label>
+	<input  type="text" th:field="*{sNombre}">
+	<span th:errors="*{sNombre}" style="color : #E81505"></span>
+	<br>
+	
+	<label>Apellido</label>
+	<input type="text" th:field="*{sApellido}">
+	<span th:errors="*{sApellido}" style="color : #E81505"></span>
+	<br>
+	
+	<label>Nit</label>
+	<input type="text" th:field="*{sNit}">
+	<span th:errors="*{sNit}" style="color : #E81505"></span>
+	<br>
+	
+	<label>Importancia</label>
+	<select  th:field="*{importancia.cImportancia}">
+	  			<option th:each="imp : ${importancias}" 
+	  					th:value=${imp.cImportancia} 
+	  					th:text="${imp.sImportancia}">
+	  			</option>	
+			</select><br>
+	
+	
+	<input type="submit" value="Guardar">
+	</form>
+	<br>
+	<button type="button" class="btn btn-secondary btn-sm"><a class="text-decoration-none text-white" href="/listado">Ver Contribuyentes</a></button>
+</body>
+</html>

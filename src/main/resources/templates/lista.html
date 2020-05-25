@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Listado Contribuyentes</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+
+	<h2>Listado de contribuyentes</h2>
+	<table class="table table-bordered">
+		<thead>
+			<tr>
+				<th scope="col">Nombre</th>
+				<th scope="col">Apellido</th>
+				<th scope="col">Nit</th>
+				<th scope="col">Importancia</th>
+				<th scope="col">Fecha Ingreso</th>
+			</tr>
+		</thead>
+		
+		<tbody>
+			<tr th:each="contri : ${contribuyentes}">
+				<td th:text="${contri.sNombre}"></td>
+				<td th:text="${contri.sApellido}"></td>
+				<td th:text="${contri.sNit}"></td>
+				<td th:text="${contri.importancia.sImportancia}"></td>
+				<td th:text="${#dates.format(contri.fIngreso, 'dd/MM/yyyy')}"></td>
+			</tr>
+		</tbody>
+	</table>
+	<br>
+	
+	<button type="button" class="btn btn-secondary btn-sm"><a class="text-decoration-none text-white" href="/index">Regresar</a></button>
+	
+
+</body>
+</html>
